@@ -129,7 +129,6 @@ class CameraPermissions : EventChannel.StreamHandler, RequestPermissionsResultLi
                     Dispatchers.Main.run { 
                         callback(permissionsGranted.apply { addAll(it) }) 
                         }
-                    }
                 }
             }
         }
