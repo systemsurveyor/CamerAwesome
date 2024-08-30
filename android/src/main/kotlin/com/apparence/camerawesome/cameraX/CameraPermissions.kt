@@ -124,11 +124,9 @@ class CameraPermissions : EventChannel.StreamHandler, RequestPermissionsResultLi
             callback(permissionsGranted)
         } else {
             // Request the not granted permissions
-            CoroutineScope(Dispatchers.IO).launch {
+            CoroutineScope(Dispatchers.Main).launch {
                 requestPermissions(activity, permissionsToAsk, PERMISSIONS_MULTIPLE_REQUEST) {
-                    Dispatchers.Main.run { 
-                        callback(permissionsGranted.apply { addAll(it) }) 
-                        }
+                        callback(permissionsGranted.apply { addAll(it) })     
                 }
             }
         }
